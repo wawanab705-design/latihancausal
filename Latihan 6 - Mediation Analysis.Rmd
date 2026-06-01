@@ -55,7 +55,7 @@ data(framing)
 
 Berdasarkan dokumentasi `?framing` dan eksperimen dari dataset: - **Treatment (X) = `treat`**: Apakah peserta terpapar berita dengan *framing* negatif tentang imigrasi (1) atau kelompok kontrol (0).
 - **Mediator (M) = `emo`**: Tingkat emosi / kecemasan (*anxiety*) peserta setelah membaca berita (skala bersambung).
-- **Outcome (Y) = `cong_mesg`**: Minat perilaku politik (apakah peserta bersedia mengirim pesan ke anggota dewan mengenai masalah imigrasi, 1=Ya, 0=Tidak).
+- **Outcome (Y) = `peduli`**: Minat perilaku politik (apakah peserta bersedia mengirim pesan ke anggota dewan mengenai masalah imigrasi, 1=Ya, 0=Tidak).
 *(Alternatif Y yang juga valid adalah `immigr` atau opini tentang imigrasi).*
 
 ------------------------------------------------------------------------
@@ -75,7 +75,7 @@ Kita juga menyertakan variabel kontrol demografis umum seperti `age`, `educ`, `g
 
 ```{r baron-kenny}
 # Model 1: Total Effect (X -> Y) = c
-# Catatan: Karena Y (cong_mesg) adalah biner/proporsional, Baron-Kenny klasik
+# Catatan: Karena Y (peduli) adalah biner/proporsional, Baron-Kenny klasik
 # biasanya memakai OLS, tapi idealnya pakai GLM. Untuk kesederhanaan Baron-Kenny
 # kita gunakan lm() (Linear Probability Model).
 model_total <- lm(cong_mesg ~ treat + age + educ + gender + income, data = framing)
@@ -194,7 +194,7 @@ label_c <- paste0("c' = ", round(path_c_prime, 2))
 # Plot manual sederhana dengan ggplot2 untuk diagram path
 # Menggunakan koordinat
 df_nodes <- data.frame(
-  name = c("Treatment\n(X: treat)", "Mediator\n(M: emosi)", "Outcome\n(Y: cong_mesg)"),
+  name = c("Treatment\n(X: treat)", "Mediator\n(M: emosi)", "Outcome\n(Y: peduli)"),
   x = c(0, 1, 2),
   y = c(0, 1, 0)
 )
@@ -224,7 +224,7 @@ ggplot() +
 **Keterangan Diagram:** - **Jalur** $a$ (Treatment $\rightarrow$ Mediator): Efek positif dan sangat signifikan.
 Peserta di *treatment* (berita framing negatif) rata-rata mengalami peningkatan kecemasan ($emosi$).
 - **Jalur** $b$ (Mediator $\rightarrow$ Outcome): Efek positif dan signifikan.
-Tingkat kecemasan yang lebih tinggi memicu keinginan bertindak ($cong\_mesg$).
+Tingkat kecemasan yang lebih tinggi memicu keinginan bertindak ($peduli$).
 - **Jalur** $c'$ (Direct Effect): Nyaris $0$.
 Tanpa melalui jalur emosi, *framing* tidak memotivasi tindakan peserta sama sekali.
 Pemicu utamanya adalah emosi.
