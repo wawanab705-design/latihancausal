@@ -1,5 +1,5 @@
 ---
-title: "Latihan 5.6: Mediation Analysis Lengkap (Tantangan)"
+title: "Latihan 6: Mediation Analysis Lengkap"
 author: ""
 date: "`r Sys.Date()`"
 output:
