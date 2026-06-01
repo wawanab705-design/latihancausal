@@ -211,10 +211,10 @@ df_edges <- data.frame(
 
 ggplot() +
   geom_segment(data = df_edges, aes(x=x, y=y, xend=xend, yend=yend), 
-               arrow = arrow(length = unit(0.3, "cm")), size = 1, color = "darkblue") +
-  geom_point(data = df_nodes, aes(x=x, y=y), size = 30, color = "lightblue") +
+               arrow = arrow(length = unit(0.3, "cm")), size = 1, color = "green") +
+  geom_point(data = df_nodes, aes(x=x, y=y), size = 30, color = "yellow") +
   geom_text(data = df_nodes, aes(x=x, y=y, label=name), fontface = "bold", size = 3.5) +
-  geom_label(data = df_edges, aes(x=lx, y=ly, label=label), fill = "white", color = "red", fontface="bold") +
+  geom_label(data = df_edges, aes(x=lx, y=ly, label=label), fill = "white", color = "black", fontface="bold") +
   theme_void() +
   xlim(-0.3, 2.3) + ylim(-0.3, 1.3) +
   ggtitle("Mediation Path Diagram (Estimasi Baron-Kenny)") +
